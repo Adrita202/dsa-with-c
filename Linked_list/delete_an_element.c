@@ -11,7 +11,7 @@ struct node
 
 };
 struct node * head=NULL;
-struct node *temp,*t;
+struct node *temp,*t,*newnode;
 int main()
 {
 	printf("Enter 1 to create a linked list:\n");
@@ -41,6 +41,27 @@ int main()
 		}
 	}
 }
+void create()
+{
+	int x=1;
+ 	head=NULL;
+ 	while(x)
+ 	{
+		newnode=(struct node *)malloc(sizeof(struct node));
+ 		printf("\nEnter Data: ");
+ 		scanf("%d",&newnode->data);
+ 		newnode->link=NULL;
+ 		if(head==NULL)
+ 			temp=head=newnode;
+	 	else
+ 		{
+ 			temp->link=newnode;
+ 			temp=newnode;
+ 		}
+  		printf("Enter 0 to stop or 1 to continue\n");
+  		scanf("%d",&x);
+ }
+}
 void delete_from_beg(el)
 {
 	struct node *temp;
@@ -54,34 +75,26 @@ void delete_from_beg(el)
 		free(temp);
 	}
 }
-void create()
-{
-	int i;
-	for (i=5;i>0;i--)
-	{
-    	struct node* temp = (struct node*)malloc(sizeof(struct node));
-    	temp->data = i;
-    	temp->link = head;
-    	head = temp;
-	}
-}
 void delete_element(el)
 {
 	struct node *temp1;
+	t=head;
+	head=temp->link;
+	free(t);
+	printf("Element deleted!!!\n");
+	if(head!=NULL)
+	{
+		
+	}
+	
+	
+	
+	
+	
 	temp=head;
 	if(temp->data ==el)
 	{
-		
-		t = temp;
-		head = temp->link;
-		free(t);
-		if(head != NULL)
-			delete_from_beg(el);
-		else
-		{
-			printf("\n The list is empty");
-		head = NULL;
-		}
+		delete_from_beg(el);
 	}
 	else
 	{
@@ -107,6 +120,7 @@ void delete_element(el)
 		}
 	}
 }
+
 void display()
 {
 	struct node *t;
@@ -118,5 +132,4 @@ void display()
     }
     printf("NULL");
 }
-				
 

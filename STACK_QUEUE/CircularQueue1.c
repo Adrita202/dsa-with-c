@@ -17,7 +17,7 @@ int main()
 
 	while(1)
 	{
-		printf("Enter your choice: ");
+		printf("\nEnter your choice: ");
 		scanf("%d",&n);
 		switch(n)
 		{
@@ -98,19 +98,33 @@ void delete()
 }
 void display()
 {
-  	int i=start;
-    if(isEmpty())
-    {
-        printf("\nQueue is empty\n");
-    }
+	int i;
+    if (isEmpty())
+		printf("Queue is empty.\n");
     else
     {
-        printf("\nElements in a Queue are:\n");
-        for(;i<=end;i++)
+        printf("\nElements in a Queue are :");
+        while(i<=end)
         {
-        	printf("%d \n",Q[i]);
-		}
-	}
- }
+            printf("%d,",Q[i]);
+            i=(i+1)%MAX;
+}
+}
+}
+//{
+//  	int i=start;
+//    if(isEmpty())
+//    {
+//        printf("\nQueue is empty\n");
+//    }
+//    else
+//    {
+//        printf("\nElements in a Queue are:\n");
+//        for(;i<=end;i++)
+//        {
+//        	printf("%d \n",Q[i]);
+//		}
+//	}
+// }
 
 
