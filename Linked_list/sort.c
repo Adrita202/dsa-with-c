@@ -65,7 +65,7 @@ void create()
 }
 void sort()
 {
-	new=(struct node *)malloc(sizeof(struct node));
+	new =(struct node *)malloc(sizeof(struct node));
 	if(start!=NULL)
 	{
 			
@@ -115,12 +115,12 @@ void sort()
 }
 void display()
 {
-	struct node *t;
-	t=start;
-	while(t!= NULL)
+	struct node *i;
+	i=start;
+	while(i!= NULL)
     {
-        printf("%d --> ",t->data);
-        t = t->link;
+        printf("%d --> ",i->data);
+        i = i->link;
     }
     printf("NULL");
 }

@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 void delete_element(int);
-void delete_from_beg(int);
+void delete_from_beg();
 void display();
 void create();
 struct node
@@ -62,7 +62,7 @@ void create()
   		scanf("%d",&x);
  }
 }
-void delete_from_beg(el)
+void delete_from_beg()
 {
 	struct node *temp;
 	temp= (struct node*)malloc(sizeof(struct node));
@@ -78,27 +78,13 @@ void delete_from_beg(el)
 void delete_element(el)
 {
 	struct node *temp1;
-	t=head;
-	head=temp->link;
-	free(t);
-	printf("Element deleted!!!\n");
-	if(head!=NULL)
-	{
-		
-	}
-	
-	
-	
-	
-	
 	temp=head;
-	if(temp->data ==el)
-	{
-		delete_from_beg(el);
-	}
+	if(temp->data==el)
+		delete_from_beg();
+		
 	else
 	{
-		temp1 =temp->link;
+		temp1 = temp->link;
 		while(temp1!= NULL)
 		{
 			if(temp1->data == el)
@@ -117,7 +103,9 @@ void delete_element(el)
 					free(t);
 				}
 			}
+			temp1=temp1->link;
 		}
+		
 	}
 }
 
