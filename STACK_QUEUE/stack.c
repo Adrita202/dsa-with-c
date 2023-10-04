@@ -30,9 +30,7 @@ int main()
 			case 2:
 				temp=pop();
 				if(temp!=-12345678)
-				{
 					printf("%d is popped",temp);
-				}
 				break;
 			case 3:
 				display();
@@ -46,9 +44,7 @@ int main()
 		}
 	}
 	int isEmpty()
-	{
 		return top==-1;
-	}
 	int isFull()
 	{
 		return top==MAX-1;
@@ -56,9 +52,7 @@ int main()
 	void push( int e)
 	{
 		if(isFull())
-		{
 			printf("Stack Overflow");
-		}
 		else
 			stk[++top]=e;
 	}

@@ -6,10 +6,10 @@ struct node
 	struct node *link;
 
 };
-struct node *new=(struct node *)malloc(sizeof(struct node));
+struct node *new=(struct node*)malloc(sizeof(struct node));
 
 struct node * start1,*start2,*start3;
-void insert_at_last(struct node *,int ,float coeff);
+void insert_at_last(struct node *,int ,float );
 
 void insert_at_last(struct node *s,int e,float c)
 {
@@ -23,7 +23,7 @@ void insert_at_last(struct node *s,int e,float c)
 	new->link=NULL;
 	new->coeff=c;
 	new->ex=e;
-	
+
 }
 void polyAdd(struct node *start1,struct node *start2)
 {
@@ -31,7 +31,7 @@ void polyAdd(struct node *start1,struct node *start2)
 	struct node *t2=start2;
 	struct node *t3=NULL;
 
-	while((t1!=NULL) && (t2!=NULL)
+	while((t1!=NULL) && (t2!=NULL))
 	{
 		if(t1->ex==t2->ex)
 		{
@@ -59,6 +59,25 @@ void polyAdd(struct node *start1,struct node *start2)
 	{
 		create_node(start3,t2->ex,t2->c);
 		t2=t2->link;
+	}
+	
+}
+void create(struct node *start)
+{
+	int n,i;
+	float coeff;
+	int expo;
+	printf("Enter the no of terms: ");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		printf("Enter the coeff of term %d: ",i+1);
+		scanf("%f",&coeff);
+		printf("Enter the exponent of term %d: ",i+1);
+		scanf("%d",&expo);
+		start=insert_at_last(start,coeff,expo);
+		
+		
 	}
 	
 }

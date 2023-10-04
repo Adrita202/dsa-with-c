@@ -37,29 +37,8 @@ int main()
 
 			default:
 				printf("invalid choice \n");
-
-
 		}
 	}
-}
-void insert(el)
-{
-	if(!isFull())
-	{
-		if(start==-1)
-		{
-			start = 0;
-			end = 0;
-		}
-		else
-		{
-			end=(end+1)%MAX;
-		}
-			
-		Q[end]=el;
-	}
-	else
-		printf("Queue is full\n");
 }
 int isFull()
 {
@@ -67,7 +46,19 @@ int isFull()
 		return 1;
 	return 0;
 }
-
+void insert(el)
+{
+	if(!isFull())
+	{
+		if(start==-1)
+			start = end = 0;
+		else
+			end=(end+1)%MAX;
+		Q[end]=el;
+	}
+	else
+		printf("Queue is full\n");
+}
 int isEmpty()
 {
 	if((end==-1)||(end<MAX-1&&start>end))
@@ -76,55 +67,58 @@ int isEmpty()
 }
 void delete()
 {
-
 	if(!isEmpty())
 	{
 		int r;
 		r=Q[start];
 		if(start==end)
-		{
 			end=start=-1;
-		}
 		else
-		{
 			start=(start+1)%MAX;
-		}
 		printf("the deleted element is %d\n",r);
 	}
 	else
-	{
 		printf("The Queue is empty.");
-	}
 }
+//void display()
+//{
+//	int i;
+//    if (isEmpty())
+//		printf("Queue is empty.\n");
+//    else
+//    {
+//        printf("\nElements in a Queue are :");
+//        while(i<=end)
+//        {
+//            printf("%d,",Q[i]);
+//            i=(i+1)%MAX;
+//		}
+//	}
+//}
 void display()
 {
-	int i;
-    if (isEmpty())
-		printf("Queue is empty.\n");
+  	int i=start;
+    if(start==-1&&end==-1)
+    {
+        printf("\nQueue is empty..");
+    }
     else
     {
         printf("\nElements in a Queue are :");
-        while(i<=end)
+        if(start<end)
         {
-            printf("%d,",Q[i]);
-            i=(i+1)%MAX;
-}
-}
-}
-//{
-//  	int i=start;
-//    if(isEmpty())
-//    {
-//        printf("\nQueue is empty\n");
-//    }
-//    else
-//    {
-//        printf("\nElements in a Queue are:\n");
-//        for(;i<=end;i++)
-//        {
-//        	printf("%d \n",Q[i]);
-//		}
-//	}
-// }
+        	for(i=start;i<=end;i++)
+				printf("%d\t",Q[i]);
+		}
+        else
+        {
+        	for(i=start;i<MAX;i++)
+				printf("%d\t",Q[i]);
+			for(i=start;i<=end;i++)
+				printf("%d\t",Q[i]);
+		}
+
+	}
+ }
 
 

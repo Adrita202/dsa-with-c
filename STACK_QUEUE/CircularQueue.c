@@ -17,7 +17,7 @@ int main()
 
 	while(1)
 	{
-		printf("Enter your choice: ");
+		printf("\nEnter your choice: ");
 		scanf("%d",&n);
 		switch(n)
 		{
@@ -36,7 +36,7 @@ int main()
 				exit(0);
 
 			default:
-				printf(" choiceEnter a valid choice\n");
+				printf(" Enter a valid choice\n");
 		}
 	}
 }
@@ -48,9 +48,7 @@ void insert(int el)
         Q[end]=el;
     }
     else if((end+1)%MAX==start)
-    {
-        printf("\nQueue is full");
-    }
+        printf("\nQueue is full\n");
     else
     {
         end=(end+1)%MAX;
@@ -60,9 +58,7 @@ void insert(int el)
 void delete()
 {
 	if((start==-1)&&(end==-1))
-    {
-        printf("\nQueue underflow");
-    }
+        printf("\nQueue underflow\n");
  	else if(start==end)
 	{
    		printf("\nThe deleted element is %d\n",Q[start]);
@@ -84,11 +80,20 @@ void display()
     else
     {
         printf("\nElements in a Queue are :");
-        while(i<=end)
+        if(start<end)
         {
-            printf("%d ",Q[i]);
-            i=(i+1)%MAX;
+        	for(i=start;i<=end;i++)
+				printf("%d\t",Q[i]);
 		}
+        else
+        {
+        	for(i=start;i<MAX;i++)
+				printf("%d\t",Q[i]);
+			for(i=start;i<=end;i++)
+				printf("%d\t",Q[i]);
+		}
+
 	}
  }
+
 
