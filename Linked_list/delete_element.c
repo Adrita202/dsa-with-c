@@ -31,7 +31,7 @@ int main()
         	case 2:
 				printf("\nEnter the element you want to delete: ");
 				scanf("%d",el);
-				delete_element(el);
+				delete_any_element(el);
 				break;
    			case 3:
    				display();
@@ -65,48 +65,48 @@ void create()
     	head = temp;
 	}
 }
-void delete_element(el)
-{
-	struct node *temp1;
-	temp=head;
-	if(temp->data ==el)
-	{
-		
-		t = temp;
-		head = temp->link;
-		free(t);
-		if(head != NULL)
-			delete_from_beg(el);
-		else
-		{
-			printf("\n The list is empty");
-		head = NULL;
-		}
-	}
-	else
-	{
-		temp1 =temp->link;
-		while(temp1!= NULL)
-		{
-			if(temp1->data == el)
-			{
-				if(temp1->link!= NULL)
-				{
-					temp->link =temp1->link;
-					t=temp1;
-					free(t);
-					temp1=temp->link;
-				}
-				else
-				{
-					temp->link=NULL;
-					t=temp1;
-					free(t);
-				}
-			}
-		}
-	}
-}
+//void delete_element(el)
+//{
+//	struct node *temp1;
+//	temp=head;
+//	if(temp->data ==el)
+//	{
+//		
+//		t = temp;
+//		head = temp->link;
+//		free(t);
+//		if(head != NULL)
+//			delete_from_beg(el);
+//		else
+//		{
+//			printf("\n The list is empty");
+//		head = NULL;
+//		}
+//	}
+//	else
+//	{
+//		temp1 =temp->link;
+//		while(temp1!= NULL)
+//		{
+//			if(temp1->data == el)
+//			{
+//				if(temp1->link!= NULL)
+//				{
+//					temp->link =temp1->link;
+//					t=temp1;
+//					free(t);
+//					temp1=temp->link;
+//				}
+//				else
+//				{
+//					temp->link=NULL;
+//					t=temp1;
+//					free(t);
+//				}
+//			}
+//		}
+//	}
+//}
 void display()
 {
 	struct node *t;
@@ -118,5 +118,27 @@ void display()
     }
     printf("NULL");
 }
-				
+	void delete_any_element(int el)
+{
+	struct node  *temp,*t;
+	temp=(struct node*)malloc(sizeof(struct node));
+	temp=head;
+	if(head->data==el)
+	{
+		delete_from_beg(el);
+	}
+	else
+	{
+		while(temp->link!=NULL)
+		{
+			if(temp->link->data==el)
+			{
+				break;
+			}
+		}
+		t=temp->link;
+		temp->link =temp->link->link;
+		free(t);
+	}
+}
 
