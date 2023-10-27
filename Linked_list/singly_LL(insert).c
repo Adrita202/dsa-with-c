@@ -1,11 +1,13 @@
-//insert at position
+//insert elements in a singly linked list
 #include<stdio.h>
 #include<stdlib.h>
 void insert_at_beg(int);
 void insert_at_anypos(int,int);
 void insert_at_end(int);
+void insert_after(int,int);
+void insert_before(int,int);
 void display();
-void count();
+
 
 struct node
 {
@@ -14,14 +16,18 @@ struct node
 
 };
 struct node * head=NULL;
+struct node * newnode, *temp;
 int main()
 {
+	
 	printf("Enter 1 to insert element at the begining:\n");
 	printf("Enter 2 to insert element at the end:\n");
 	printf("Enter 3 to insert element at the any position:\n");
-	printf("Enter 4 to display:\n");
-	printf("Enter 5 to count the number of nodes: ");
-	int ch,el,pos;
+	printf("Enter 4 to insert element after an element:\n");
+	printf("Enter 5 to insert element before an element:\n");
+	printf("Enter 6 to display:\n");
+	int ch,el,pos,key;
+	
 	while (1)
     {
         printf("\n  Enter your choice : ");
@@ -48,12 +54,26 @@ int main()
 				scanf("%d",&pos);
 				insert_at_anypos(el,pos);
 				break;
-   			case 4:
+   			
+			case 4:
+				printf("\nINSERTING AFTER AN ELEMENT");
+				printf("\nInsert the element after which you want to insert new node: ");
+				scanf("%d",&key);
+				printf("\nEnter the element you want to insert: ");
+				scanf("%d",&el);
+				insert_after(key,el);
+				break;
+			case 5:
+				printf("\nINSERTING BEFORE AN ELEMENT\n");
+				printf("\nInsert the element before which you want to insert new node: ");
+				scanf("%d",&key);
+				printf("\nEnter the element you want to insert: ");
+				scanf("%d",&el);
+				insert_before(key,el);
+				break;
+			case 6:
    				display();
    				break;
-			case 5:
-				count(head);
-				break;
 			default:
 				printf("wrong input!");
 
@@ -126,21 +146,52 @@ void insert_at_anypos(int el,int pos)
 		}
 	}
 }
-void count()
+void insert_after(int key,int el)
 {
-	int count=0;
-	if (head==NULL)
-		printf("The list is empty.");
-	else
-	{
-		struct node *t = NULL;
-		t=head;
-		while(t!=NULL)
+		int flag;
+		newnode=(struct node*)malloc(sizeof(struct node));
+		temp=head;
+		newnode->data=el;
+		while(temp!=NULL)
 		{
-			count++;
-			t=t->link;
+			if(temp->data == key)
+			{
+				newnode->link=temp->link;
+				temp->link=newnode;
+				flag=1;
+				printf("Element Inserted");
+				}
+			temp=temp->link;
 		}
-	printf("The number of nodes in the list: %d",count);
+		if(flag==0)
+			printf("\n%d is absent in the list",key);
+}
+void insert_before(int key,int el)
+{
+	int flag;
+	newnode=(struct node*)malloc(sizeof(struct node));
+	temp=head;
+
+	flag=0;
+	newnode->data=el;
+	while(temp->link!=NULL)
+	{
+		if(head->data==key)
+		{
+			flag=1;
+			newnode->link=temp;
+			head=newnode;
+		}
+		else if(temp->link->data==key)
+		{
+			flag=1;
+			newnode->link=temp->link->link;
+			temp=newnode;
+			printf("Element Inserted");
+		}
+		temp=temp->link;
 	}
+	if(flag==0)
+	printf("\n%d is absent in the list",key);
 }
 	

@@ -1,6 +1,8 @@
+//impliment doubly linked list
 #include<stdio.h>
 #include<stdlib.h>
-struct node{
+struct node
+{
 	int data;
 	struct node *next;
 	struct node *prev;
@@ -68,7 +70,7 @@ void main()
 				scanf("%d",&pos);
 				printf("Enter the element: ");
 	   			scanf("%d",&el);
-	   		//	insert_at_anypos(el,pos);
+	   			insert_at_anypos(el,pos);
 				break;
 			case 6:
 				printf("Deleting from begining:\n");
@@ -186,7 +188,7 @@ void delete_at_anypos(int pos)
 		temp = (struct node*)malloc(sizeof(struct node));
 		int i=1;
 		temp=head;
-		while(i<pos-1 && temp!=NULL)
+		while((i<pos-1) && (temp!=NULL))
 		{
 			temp=temp->next;
 			i++;
@@ -212,4 +214,32 @@ void display()
         printf("%d\t",temp->data);
         temp=temp->next;
     }
+}
+void insert_at_anypos(int el,int pos)
+{
+	int i;
+	temp=head;
+	if(pos<1)
+		printf("Invalid position\n");
+	else if(pos==1)
+		insert_at_beg(el);
+	else
+	{
+		newnode=(struct node*)malloc(sizeof(struct node));
+		newnode->data=el;
+		while(i<pos-1 && temp != NULL)
+		{
+			temp=temp->next;
+			i++;
+		}
+		if(temp==NULL)
+			printf("Invalid position.");
+		else
+		{
+			newnode->prev=temp;
+			newnode->next=temp->next;
+			temp->next->prev=newnode;
+			temp->next=newnode;
+		}
+	}
 }

@@ -3,6 +3,7 @@
 void delete_from_beg();
 void delete_from_anypos();
 void delete_from_end();
+void delete_any_element();
 void display();
 void create();
 
@@ -20,7 +21,8 @@ int main()
 	printf("Enter 2 to delete element from the begining:\n");
 	printf("Enter 3 to delete element from the end:\n");
 	printf("Enter 4 to delete element from the any position:\n");
-	printf("Enter 5 to display:\n");
+	printf("Enter 5 to delete any element:\n");
+	printf("Enter 6 to display:\n");
 	int ch,el,pos;
 	while (1)
     {
@@ -46,7 +48,12 @@ int main()
 				scanf("%d",&pos);
 				delete_from_anypos(pos);
 				break;
-   			case 5:
+			case 5:
+				printf("\nEnter the element you want to delete: ");
+				scanf("%d",el);
+				delete_any_element(el);
+				break;
+   			case 6:
    				display();
    				break;
 			default:
@@ -147,6 +154,26 @@ void display()
         t = t->link;
     }
     printf("NULL");
+}
+void delete_any_element(el)
+{
+	struct node *t;
+	temp=head;
+	if(head->data ==el)
+		delete_from_beg(el);
+	else
+	{
+		while(temp->link!= NULL)
+		{
+			if(temp->link->data == el)
+			{
+					break;
+				}
+		}
+		t=temp->link;
+		temp->link =temp->link->link;
+		free(t);
+	}
 }
 
 

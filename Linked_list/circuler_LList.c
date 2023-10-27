@@ -1,3 +1,4 @@
+//Implement circular linked list
 #include<stdio.h>
 #include<stdlib.h>
 struct node{
@@ -10,6 +11,7 @@ void create();
 void display();
 void insert_at_beg(int);
 void insert_at_end(int);
+void insert_at_anypos(int,int);
 void del_beg();
 void del_end();
 void delete_from_anypos(int);
@@ -54,7 +56,7 @@ void main()
 					insert_at_end(el);
 					break;
 				case 3:
-					printf("Enter the index to insert: ");
+					printf("Enter the position to insert: ");
 					scanf("%d",&pos);
 					insert_at_anypos( el,pos);
 					break;
@@ -195,7 +197,7 @@ void delete_from_anypos(int pos)
 			temp=temp->link;
 			i++;
 		}
-		if(temp==NULL)
+		if(temp==tail)
 			printf("Invalid position.");
 		else
 		{
@@ -211,6 +213,24 @@ void insert_at_anypos(int el,int pos)
 		printf("Insertion not possible");
 	else if(pos==1)
 		insert_at_beg(el);
-		
+	else
+	{
+		int i = 1;
+		newnode = (struct node*)malloc(sizeof(struct node));
+		newnode->data = el;
+		temp = tail->link;
+		while(i<pos-1 && temp!=tail)
+		{
+			temp = temp->link;
+			i++;
+		}
+		if(temp ==tail)
+		{
+			printf("Invalid Position !\n");
+			return;
+		}
+		newnode->link = temp->link;
+		temp->link = newnode;
+	}
 }
 

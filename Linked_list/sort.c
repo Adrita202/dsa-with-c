@@ -41,28 +41,27 @@ int main()
 		}
 	}
 }
-
-void create()
-{
-	int x=1;
- 	start=NULL;
- 	while(x)
- 	{
-		new=(struct node *)malloc(sizeof(struct node));
- 		printf("\nEnter Data: ");
- 		scanf("%d",&new->data);
- 		new->link=NULL;
- 		if(start==NULL)
- 			temp1=start=new;
-	 	else
- 		{
- 			temp1->link=new;
- 			temp1=new;
- 		}
-  		printf("Enter 0 to stop or 1 to continue\n");
-  		scanf("%d",&x);
- }
-}
+//void create()
+//{
+//	int x=1;
+// 	start=NULL;
+// 	while(x)
+// 	{
+//		new=(struct node *)malloc(sizeof(struct node));
+// 		printf("\nEnter Data: ");
+// 		scanf("%d",&new->data);
+// 		new->link=NULL;
+// 		if(start==NULL)
+// 			temp1=start=new;
+//	 	else
+// 		{
+// 			temp1->link=new;
+// 			temp1=new;
+// 		}
+//  		printf("Enter 0 to stop or 1 to continue\n");
+//  		scanf("%d",&x);
+// }
+//}
 void sort()
 {
 	new =(struct node *)malloc(sizeof(struct node));

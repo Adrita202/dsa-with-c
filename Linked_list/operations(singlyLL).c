@@ -1,3 +1,4 @@
+//operations on a singly linked list
 #include<stdio.h>
 #include<stdlib.h>
 void create();
@@ -6,6 +7,7 @@ void sort();
 void search(int);
 void display();
 void reverse();
+void count();
 struct node
 {
 	int data;
@@ -55,6 +57,10 @@ int main()
 				printf("REversed list\n");
 				reverse();
 				display();
+				break;
+			case 7:
+				printf("counting the nodes:\n");
+				count();
 				break;
 				
 			default:
@@ -166,4 +172,21 @@ void reverse()
 		temp=nextnode;
 	}
 	head=prevnode;
+}
+void count()
+{
+	int count=0;
+	if (head==NULL)
+		printf("The list is empty.");
+	else
+	{
+		struct node *t = NULL;
+		t=head;
+		while(t!=NULL)
+		{
+			count++;
+			t=t->link;
+		}
+	printf("The number of nodes in the list: %d",count);
+	}
 }

@@ -65,48 +65,48 @@ void create()
     	head = temp;
 	}
 }
-//void delete_element(el)
-//{
-//	struct node *temp1;
-//	temp=head;
-//	if(temp->data ==el)
-//	{
-//		
-//		t = temp;
-//		head = temp->link;
-//		free(t);
-//		if(head != NULL)
-//			delete_from_beg(el);
-//		else
-//		{
-//			printf("\n The list is empty");
-//		head = NULL;
-//		}
-//	}
-//	else
-//	{
-//		temp1 =temp->link;
-//		while(temp1!= NULL)
-//		{
-//			if(temp1->data == el)
-//			{
-//				if(temp1->link!= NULL)
-//				{
-//					temp->link =temp1->link;
-//					t=temp1;
-//					free(t);
-//					temp1=temp->link;
-//				}
-//				else
-//				{
-//					temp->link=NULL;
-//					t=temp1;
-//					free(t);
-//				}
-//			}
-//		}
-//	}
-//}
+void delete_element(el)
+{
+	struct node *temp1;
+	temp=head;
+	if(temp->data ==el)
+	{
+		
+		t = temp;
+		head = temp->link;
+		free(t);
+		if(head != NULL)
+			delete_from_beg(el);
+		else
+		{
+			printf("\n The list is empty");
+		head = NULL;
+		}
+	}
+	else
+	{
+		temp1 =temp->link;
+		while(temp1!= NULL)
+		{
+			if(temp1->data == el)
+			{
+				if(temp1->link!= NULL)
+				{
+					temp->link =temp1->link;
+					t=temp1;
+					free(t);
+					temp1=temp->link;
+				}
+				else
+				{
+					temp->link=NULL;
+					t=temp1;
+					free(t);
+				}
+			}
+		}
+	}
+}
 void display()
 {
 	struct node *t;
